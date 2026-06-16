@@ -4,6 +4,7 @@ Import assets and set semiautomatically
 Events tab
 Header design when scrolling
 Design
+Movie zoom in effect
 
 Ask for more information about media site
 
