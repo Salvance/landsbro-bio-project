@@ -26,7 +26,7 @@ header>:first-child {
     width: 100px;
 }
 
-header>:first-child>img {
+header>:first-child>a>img {
     height: 75px;
     margin-left: 25px;
 }
@@ -79,4 +79,52 @@ header>:nth-child(2)>ul>li {
     text-decoration: none;
     color: inherit;
     position: relative;
+}
+
+#current-movies-container {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.current-movie {
+    border-style: solid;
+    border-radius: 25px;
+    padding: 1rem;
+    font-family: var(--heading-font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-movie>img {
+    width: 250px;
+    border-radius: 15px;
+    margin-bottom: 1.2rem;
+}
+
+.current-movie>:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.current-movie>:nth-child(3) {
+    border-style: solid;
+    font-size: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10px;
+    background-color: red;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    text-align: center;
+    margin-top: 150px;
 }
