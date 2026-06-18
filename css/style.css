@@ -6,6 +6,10 @@ html {
     height: 5000px;
 }
 
+body {
+    background: #121212;
+}
+
 :root {
     --heading-font: "Montserrat", sans-serif;
 }
@@ -90,20 +94,34 @@ header>:nth-child(2)>ul>li {
     margin-top: 50px;
 }
 
+#current-movies-anchor {
+    color: aliceblue;
+}
+
 .current-movie {
-    border-style: solid;
+    border: none;
+    background: #2f2f2f;
+    color: white;
     border-radius: 25px;
-    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.12);
     font-family: var(--heading-font);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.current-movie:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 35px rgba(255, 0, 0, 0.2);
 }
 
 .current-movie>img {
     width: 250px;
     border-radius: 15px;
     margin-bottom: 1.2rem;
+    object-fit: cover;
 }
 
 .current-movie>:nth-child(2) {
