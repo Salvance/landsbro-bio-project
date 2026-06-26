@@ -1,12 +1,13 @@
-fetch('https://rough-bonus-c86b.barnabaskoltai.workers.dev')
+const workerUrl = 'https://rough-bonus-c86b.barnabaskoltai.workers.dev';
+
+fetch(workerUrl)
     .then(r => r.json())
     .then(data => {
         const container = document.getElementById('current-movies-container');
         data.film.forEach(film => {
             container.innerHTML += `
           <div class="current-movie">
-            <img src="${film.BildSokvag}" alt="${film.FilmNamn}">
-            <p class="movie-name">${film.FilmNamn}</p>
+            <img src="${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}" alt="${film.FilmNamn}">            <p class="movie-name">${film.FilmNamn}</p>
             <p class="movie-genre">${film.Genre}</p>
             <p class="movie-runtime">${formatRuntime(film.Speltid)}</p>
             <p class="movie-next-time-text">Nästa visning</p>
