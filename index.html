@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landsbro Bio</title>
+    <script src="js/app.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/design-UI/landsbro-bio-logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7676aee198.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,40 +20,27 @@
         <div>
             <a href="index.html"><img src="images/design-UI/landsbro-bio-logo.png" alt="landsbro bio logga"></a>
         </div>
-        <div>
+        <nav id="nav-header">
             <ul>
                 <li><a href="index.html" class="navigation">Hem</a></li>
                 <li><a href="index.html#current-movies-anchor" class="navigation">Aktuella Filmer</a></li>
                 <li><a href="pages/omOss.html" class="navigation">Om Oss</a></li>
                 <li><a href="pages/kontaktaOss.html" class="navigation">Kontakta Oss</a></li>
             </ul>
-        </div>
+        </nav>
     </header>
     <main>
         <div class="hero-container"></div>
         <h1 id="current-movies-anchor">Aktuella Filmer</h1>
-        <div id="current-movies-container">
-            <div class="current-movie">
-                <img src="images/movies/test.jpg" alt="test">
-                <p>Movie Name</p>
-                <p>Läs Mer</p>
-            </div>
-            <div class="current-movie">
-                <img src="images/movies/test.jpg" alt="test">
-                <p>Movie Name</p>
-                <p>Läs Mer</p>
-            </div>
-            <div class="current-movie">
-                <img src="images/movies/test.jpg" alt="test">
-                <p>Movie Name</p>
-                <p>Läs Mer</p>
-            </div>
-            <div class="current-movie">
-                <img src="images/movies/test.jpg" alt="test">
-                <p>Movie Name</p>
-                <p>Läs Mer</p>
-            </div>
-        </div>
+        <div id="current-movies-container"></div>
+
+        <!-- 
+        <div class="current-movie">
+            <img src="${film.BildSokvag}" alt="${film.FilmNamn}">
+            <p>${film.FilmNamn}</p>
+            <p>Läs Mer</p>
+          </div>
+        -->
     </main>
 </body>
 
