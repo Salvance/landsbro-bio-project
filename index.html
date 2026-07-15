@@ -17,15 +17,27 @@
 
 <body>
     <header>
-        <div>
-            <a href="index.html"><img src="images/design-UI/landsbro-bio-logo.png" alt="landsbro bio logga"></a>
+        <div id="header-logo-div">
+            <a href="index.html"><img id="header-logo" src="images/design-UI/landsbro-bio-logo.png"
+                    alt="landsbro bio logga"></a>
         </div>
         <nav id="nav-header">
+            <ul id="nav-ul">
+                <li class="nav-li"><a href="index.html" class="navigation">Hem</a></li>
+                <li class="nav-li"><a href="index.html#current-movies-anchor" class="navigation">Aktuella Filmer</a>
+                </li>
+                <li class="nav-li"><a href="pages/omOss.html" class="navigation">Om Oss</a></li>
+                <li class="nav-li"><a href="pages/kontaktaOss.html" class="navigation">Kontakta Oss</a></li>
+            </ul>
+        </nav>
+        <!-- <i id="nav-button" class="fa-solid fa-bars"></i> -->
+        <nav id="nav-sidebar" class="active">
+            <i class="fa-solid fa-x"></i>
             <ul>
-                <li><a href="index.html" class="navigation">Hem</a></li>
-                <li><a href="index.html#current-movies-anchor" class="navigation">Aktuella Filmer</a></li>
-                <li><a href="pages/omOss.html" class="navigation">Om Oss</a></li>
-                <li><a href="pages/kontaktaOss.html" class="navigation">Kontakta Oss</a></li>
+                <li>Hem</li>
+                <li>Aktuella Filmer</li>
+                <li>Om Oss</li>
+                <li>Kontakta Oss</li>
             </ul>
         </nav>
     </header>
@@ -39,6 +51,23 @@
         <h1 id="current-movies-anchor">Aktuella Filmer</h1>
         <div id="current-movies-container"></div>
     </main>
+    <div id="modal-overlay">
+        <div id="modal">
+            <button id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <img id="modal-poster" src="" alt="">
+            <div id="modal-info">
+                <h2 id="modal-title"></h2>
+                <p id="modal-genre"></p>
+                <p id="modal-runtime"></p>
+                <p id="modal-next-text">Nästa visning</p>
+                <p id="modal-next-date"></p>
+                <a id="modal-book" href="http://sagabiolandsbro.internetbokningen.com/chap/bookforestall/"
+                    target="_blank" class="movie-booking-link">
+                    <i class="fa-solid fa-ticket"></i>Boka Biljett
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
