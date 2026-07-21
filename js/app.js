@@ -88,10 +88,15 @@ fetch(workerUrl)
     });
 
 document.getElementById("nav-button").addEventListener("click", () => {
-    document.getElementById("nav-button").style.display = "none";
-    document.getElementById("nav-sidebar").style.display = "flex";
-    document.getElementById("nav-close").addEventListener("click", () => {
-        document.getElementById("nav-button").style.display = "block";
-        document.getElementById("nav-sidebar").style.display = "none";
-    })
+    document.getElementById("nav-button").classList.remove("active");
+    document.getElementById("nav-sidebar").classList.add("active");
 })
+
+document.getElementById("nav-close").addEventListener("click", () => {
+    document.getElementById("nav-button").classList.add("active");
+    document.getElementById("nav-sidebar").classList.remove("active");
+})
+
+if (!document.getElementById("nav-sidebar").classList.contains("active")) {
+    document.getElementById("nav-button").classList.add("active")
+}

@@ -395,7 +395,7 @@ h1 {
     }
 
     #nav-button {
-        display: block;
+        display: none;
         color: white;
         font-size: 3rem;
         margin-right: 20px;
@@ -407,7 +407,7 @@ h1 {
         right: 0;
         width: 60%;
         max-width: 225px;
-        height: 100vh;
+        height: 100dvh;
         background-color: black;
         display: none;
         justify-content: center;
@@ -419,7 +419,7 @@ h1 {
     #nav-sidebar>ul {
         color: white;
         display: flex;
-        height: 100vh;
+        height: 100dvh;
         gap: 50px;
         width: 82%;
         justify-content: center;
@@ -448,6 +448,14 @@ h1 {
         height: 100px;
         font-family: var(--heading-font);
         font-weight: 600;
+    }
+
+    #nav-sidebar.active {
+        display: flex;
+    }
+
+    #nav-button.active {
+        display: block;
     }
 
     header {
