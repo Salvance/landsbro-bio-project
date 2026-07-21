@@ -88,5 +88,10 @@ fetch(workerUrl)
     });
 
 document.getElementById("nav-button").addEventListener("click", () => {
-
+    document.getElementById("nav-button").style.display = "none";
+    document.getElementById("nav-sidebar").style.display = "flex";
+    document.getElementById("nav-close").addEventListener("click", () => {
+        document.getElementById("nav-button").style.display = "block";
+        document.getElementById("nav-sidebar").style.display = "none";
+    })
 })

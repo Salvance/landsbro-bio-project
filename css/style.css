@@ -402,14 +402,18 @@ h1 {
     }
 
     #nav-sidebar {
-        background-color: black;
-        width: 250px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 60%;
+        max-width: 225px;
         height: 100vh;
-        margin-left: calc(100% - 100px - 250px);
-        display: flex;
+        background-color: black;
+        display: none;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        z-index: 999;
     }
 
     #nav-sidebar>ul {
@@ -417,7 +421,7 @@ h1 {
         display: flex;
         height: 100vh;
         gap: 50px;
-        width: 88%;
+        width: 82%;
         justify-content: center;
         flex-direction: column;
         list-style: none;
@@ -433,7 +437,7 @@ h1 {
     }
 
     #nav-sidebar>ul>li {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-align: center;
         line-height: 100px;
         background: linear-gradient(135deg, rgba(120, 0, 0, 0.4), rgba(40, 0, 0, 0.6));
@@ -447,7 +451,37 @@ h1 {
     }
 
     header {
-        display: flex;
-        align-items: stretch;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 615px) {
+    .hero-slide {
+        flex-direction: column;
+        padding: 160px 20px 20px 20px;
+        min-height: 700px;
+        background: linear-gradient(to bottom, #000 40%, transparent);
+    }
+
+    #hero {
+        height: auto;
+        min-height: 700px;
+    }
+
+    #hero-slides {
+        align-items: flex-start;
+    }
+
+    .hero-slide img {
+        height: 300px;
+        width: auto;
+    }
+
+    .hero-info {
+        text-align: center;
+    }
+
+    #current-movies-anchor {
+        margin-top: 75px;
     }
 }
