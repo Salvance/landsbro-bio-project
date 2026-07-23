@@ -429,9 +429,9 @@ h1 {
 
     #nav-sidebar>i {
         color: white;
-        position: relative;
+        position: fixed;
         top: 16px;
-        right: 96px;
+        right: 175px;
         font-size: 1.75rem;
         cursor: pointer;
     }
@@ -491,5 +491,20 @@ h1 {
 
     #current-movies-anchor {
         margin-top: 75px;
+    }
+}
+
+@media (max-height: 675px) {
+    #nav-sidebar>ul>li {
+        height: 15%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #nav-sidebar>ul {
+        margin-top: 20px;
+        gap: 20px;
     }
 }
