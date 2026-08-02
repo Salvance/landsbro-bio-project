@@ -87,16 +87,26 @@ fetch(workerUrl)
 
     });
 
+function closeNav() {
+    document.getElementById("nav-button").classList.add("active");
+    document.getElementById("nav-sidebar").classList.remove("active");
+    document.getElementById("sidebar-overlay").classList.remove("active");
+}
+
 document.getElementById("nav-button").addEventListener("click", () => {
     document.getElementById("nav-button").classList.remove("active");
     document.getElementById("nav-sidebar").classList.add("active");
+    document.getElementById("sidebar-overlay").classList.add("active");
 })
 
 document.getElementById("nav-close").addEventListener("click", () => {
-    document.getElementById("nav-button").classList.add("active");
-    document.getElementById("nav-sidebar").classList.remove("active");
+    closeNav();
 })
 
 if (!document.getElementById("nav-sidebar").classList.contains("active")) {
     document.getElementById("nav-button").classList.add("active")
 }
+
+document.getElementById("sidebar-overlay").addEventListener("click", () => {
+    closeNav();
+})

@@ -185,9 +185,12 @@ header {
     transform: scaleX(1);
 }
 
-.navigation {
+a {
     text-decoration: none;
     color: inherit;
+}
+
+.navigation {
     position: relative;
 }
 
@@ -272,8 +275,6 @@ header {
 }
 
 .movie-booking-link {
-    text-decoration: none;
-    color: inherit;
     font-size: 1.5rem;
     font-weight: 500;
 }
@@ -394,10 +395,22 @@ h1 {
         display: none;
     }
 
+    .current-movie {
+        width: 210px;
+    }
+
+    .movie-booking-link {
+        font-size: 1.2rem;
+    }
+
+    #header-logo {
+        height: 60px;
+    }
+
     #nav-button {
         display: none;
         color: white;
-        font-size: 3rem;
+        font-size: 2.6rem;
         margin-right: 20px;
     }
 
@@ -407,19 +420,20 @@ h1 {
         right: 0;
         width: 60%;
         max-width: 225px;
-        height: 100dvh;
+        height: 100vh;
         background-color: black;
         display: none;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         z-index: 999;
+        animation: popIn 0.3s ease;
     }
 
     #nav-sidebar>ul {
         color: white;
         display: flex;
-        height: 100dvh;
+        height: 100vh;
         gap: 50px;
         width: 82%;
         justify-content: center;
@@ -458,9 +472,26 @@ h1 {
         display: block;
     }
 
+    #sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 10;
+
+    }
+
+    #sidebar-overlay.active {
+        display: block;
+        animation: popIn 0.3s ease;
+    }
+
     header {
         justify-content: space-between;
     }
+
+
 }
 
 @media (max-width: 615px) {
@@ -469,6 +500,19 @@ h1 {
         padding: 160px 20px 20px 20px;
         min-height: 700px;
         background: linear-gradient(to bottom, #000 40%, transparent);
+    }
+
+    #modal {
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+
+    #modal-poster {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
     }
 
     #hero {
