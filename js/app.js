@@ -18,7 +18,7 @@ fetch(workerUrl)
         </div>
     `;
             document.getElementById('current-movies-container').innerHTML = `
-        <p style="color:#9f9f9f; font-family:var(--heading-font); text-align:center; width:100%;">
+        <p style="color:#9f9f9f; margin-bottom:20px; font-family:var(--heading-font); text-align:center; width:100%;">
             Inga aktuella filmer just nu. Kom tillbaka snart!
         </p>
     `;
