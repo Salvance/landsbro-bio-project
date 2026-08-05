@@ -11,6 +11,19 @@ fetch(workerUrl)
     .then(r => r.json())
     .then(data => {
         const container = document.getElementById('current-movies-container');
+        if (!data.film || data.film.length === 0) {
+            document.getElementById('hero').innerHTML = `
+        <div style="display:flex; align-items:center; text-align:center; padding-right:20px; padding-left:20px; justify-content:center; height:100%; color:white; font-family:var(--heading-font); margin-top:200px; font-size:1.5rem;">
+            Inga aktuella filmer just nu. Kom tillbaka snart!
+        </div>
+    `;
+            document.getElementById('current-movies-container').innerHTML = `
+        <p style="color:#9f9f9f; font-family:var(--heading-font); text-align:center; width:100%;">
+            Inga aktuella filmer just nu. Kom tillbaka snart!
+        </p>
+    `;
+            return;
+        }
         data.film.forEach(film => {
             const card = document.createElement('div');
             card.className = 'current-movie';

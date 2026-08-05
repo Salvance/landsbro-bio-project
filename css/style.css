@@ -5,8 +5,71 @@
 }
 
 html {
-    height: 5000px;
     scroll-behavior: smooth;
+}
+
+footer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: #1c1c1c;
+}
+
+#footer-first {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#footer-second {
+    text-align: center;
+    color: #666;
+    font-size: 0.75rem;
+}
+
+#footer-logo {
+    grid-column: 1/2;
+}
+
+#footer-logo>img {
+    width: 150px;
+}
+
+#footer-social-media {
+    font-size: 5rem;
+    grid-column: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+}
+
+#footer-nav {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-nav>ul {
+    list-style: none;
+    font-family: var(--heading-font);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    color: white;
+}
+
+#footer-info {
+    font-family: var(--heading-font);
+    color: aliceblue;
+    font-weight: 500;
+    grid-column: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
 }
 
 body {
@@ -63,6 +126,7 @@ header {
 
 .nav-li {
     font-weight: 500;
+    color: aliceblue;
 }
 
 #hero {
@@ -535,6 +599,18 @@ h1 {
 
     #current-movies-anchor {
         margin-top: 75px;
+    }
+
+    #footer-first {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    #footer-logo {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
     }
 }
 
