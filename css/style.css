@@ -8,10 +8,33 @@ html {
     scroll-behavior: smooth;
 }
 
+#hero-message {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    font-family: var(--heading-font);
+    margin-top: 200px;
+    font-size: 1.5rem;
+}
+
+#no-movies-message {
+    color: #9f9f9f;
+    margin-bottom: 20px;
+    font-family: var(--heading-font);
+    text-align: center;
+    width: 100%;
+}
+
 footer {
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: #1c1c1c;
+    margin-top: 50px;
 }
 
 #footer-first {
@@ -31,6 +54,8 @@ footer {
 
 #footer-logo>img {
     width: 150px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 #footer-social-media {
@@ -577,6 +602,11 @@ h1 {
         width: 100%;
         max-width: 250px;
         height: auto;
+    }
+
+    #footer-logo>img {
+        margin-top: 0px;
+        margin-left: 0px;
     }
 
     #hero {

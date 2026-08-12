@@ -13,12 +13,12 @@ fetch(workerUrl)
         const container = document.getElementById('current-movies-container');
         if (!data.film || data.film.length === 0) {
             document.getElementById('hero').innerHTML = `
-        <div style="display:flex; align-items:center; text-align:center; padding-right:20px; padding-left:20px; justify-content:center; height:100%; color:white; font-family:var(--heading-font); margin-top:200px; font-size:1.5rem;">
+        <div id="hero-message">
             Inga aktuella filmer just nu. Kom tillbaka snart!
         </div>
     `;
             document.getElementById('current-movies-container').innerHTML = `
-        <p style="color:#9f9f9f; margin-bottom:20px; font-family:var(--heading-font); text-align:center; width:100%;">
+        <p id="no-movies-message">
             Inga aktuella filmer just nu. Kom tillbaka snart!
         </p>
     `;
