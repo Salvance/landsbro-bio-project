@@ -4,26 +4,44 @@ function formatRuntime(speltid) {
     const parts = speltid.split('.');
     const hours = parts[0];
     const minutes = parts[1];
-    return `${hours}h ${minutes}min`;
+    if (hours != 0 && minutes != 0) {
+        return `${hours}h ${minutes}min`;
+    }
+    else {
+        return `Speltid är inte tillgänglig just nu`
+    }
 }
 
 fetch(workerUrl)
     .then(r => r.json())
     .then(data => {
         const container = document.getElementById('current-movies-container');
+
         if (!data.film || data.film.length === 0) {
             document.getElementById('hero').innerHTML = `
-        <div id="hero-message">
-            Inga aktuella filmer just nu. Kom tillbaka snart!
-        </div>
-    `;
-            document.getElementById('current-movies-container').innerHTML = `
-        <p id="no-movies-message">
-            Inga aktuella filmer just nu. Kom tillbaka snart!
-        </p>
-    `;
+                <div id="hero-message">
+                    Inga aktuella filmer just nu. Kom tillbaka snart!
+                </div>
+            `;
+            container.innerHTML = `
+                <p id="no-movies-message">
+                    Inga aktuella filmer just nu. Kom tillbaka snart!
+                </p>
+            `;
             return;
         }
+
+        data.film.sort((a, b) => {
+            const parseDate = (dateStr) => {
+                const parts = dateStr.trim().split(/[\s\/]/);
+                const day = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1;
+                const year = parseInt(parts[2]);
+                return new Date(year, month, day);
+            };
+            return parseDate(a.forestall[0].Datum) - parseDate(b.forestall[0].Datum);
+        });
+
         data.film.forEach(film => {
             const card = document.createElement('div');
             card.className = 'current-movie';
@@ -34,21 +52,33 @@ fetch(workerUrl)
                 <p class="movie-runtime">${formatRuntime(film.Speltid)}</p>
                 <p class="movie-next-time-text">Nästa visning</p>
                 <p class="movie-next-time-date">${film.forestall[0].Datum} kl ${film.forestall[0].Tid}</p>
-                <div class="movie-booking">
-                    <a href="http://sagabiolandsbro.internetbokningen.com/chap/bookforestall/" target="_blank" class="movie-booking-link">
-                        <i class="fa-solid fa-ticket"></i>Boka Biljett
-                    </a>
-                </div>
+                <a href="http://sagabiolandsbro.internetbokningen.com/chap/bookforestall/" target="_blank" class="movie-booking-link">
+                    <div class="movie-booking"><i class="fa-solid fa-ticket"></i>Boka Biljett</div>
+                </a>
                 <p class="movie-info">Läs mer <i class="fa-solid fa-arrow-right"></i></p>
             `;
 
             card.querySelector('.movie-info').addEventListener('click', () => {
                 document.getElementById('modal-poster').src = `${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}`;
                 document.getElementById('modal-title').textContent = film.FilmNamn;
-                document.getElementById('modal-genre').textContent = film.Genre;
                 document.getElementById('modal-runtime').textContent = formatRuntime(film.Speltid);
                 document.getElementById('modal-next-date').textContent = `${film.forestall[0].Datum} kl ${film.forestall[0].Tid}`;
                 document.getElementById('modal-overlay').classList.add('active');
+
+                document.getElementById('modal-genre').textContent = '';
+                document.getElementById('modal-handling').textContent = '';
+                document.getElementById('modal-regissor').textContent = '';
+                document.getElementById('modal-skadespelare').textContent = '';
+
+                fetch(`${workerUrl}/filminfo?id=${film.FilmNr}`)
+                    .then(r => r.json())
+                    .then(info => {
+                        const f = info.Filminfo;
+                        document.getElementById('modal-genre').textContent = f.genre;
+                        document.getElementById('modal-handling').textContent = f.handling;
+                        document.getElementById('modal-regissor').textContent = f.regissor ? `Regissör: ${f.regissor}` : '';
+                        document.getElementById('modal-skadespelare').textContent = f.skadespelare ? `Skådespelare: ${f.skadespelare}` : '';
+                    });
             });
 
             container.appendChild(card);
@@ -71,7 +101,6 @@ fetch(workerUrl)
                     </div>
                 </div>
             `;
-
             dotsContainer.innerHTML += `<div class="hero-dot ${i === 0 ? 'active' : ''}" onclick="goTo(${i})"></div>`;
         });
 
@@ -97,7 +126,6 @@ fetch(workerUrl)
                 document.getElementById('modal-overlay').classList.remove('active');
             }
         });
-
     });
 
 function closeNav() {
@@ -110,16 +138,16 @@ document.getElementById("nav-button").addEventListener("click", () => {
     document.getElementById("nav-button").classList.remove("active");
     document.getElementById("nav-sidebar").classList.add("active");
     document.getElementById("sidebar-overlay").classList.add("active");
-})
+});
 
 document.getElementById("nav-close").addEventListener("click", () => {
     closeNav();
-})
+});
 
 if (!document.getElementById("nav-sidebar").classList.contains("active")) {
-    document.getElementById("nav-button").classList.add("active")
+    document.getElementById("nav-button").classList.add("active");
 }
 
 document.getElementById("sidebar-overlay").addEventListener("click", () => {
     closeNav();
-})
+});

@@ -266,7 +266,7 @@ header {
     height: 2px;
     background: currentColor;
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: center;
     transition: transform 0.1s ease-in-out;
 }
 
@@ -291,6 +291,7 @@ a {
     flex-wrap: wrap;
     margin-top: 50px;
     gap: 20px;
+    padding-bottom: 40px;
 }
 
 #current-movies-anchor {
@@ -366,6 +367,7 @@ a {
 .movie-booking-link {
     font-size: 1.5rem;
     font-weight: 500;
+    margin-top: auto;
 }
 
 .movie-booking {
@@ -378,7 +380,23 @@ a {
     justify-content: center;
     border-radius: 5px;
     margin-bottom: 1rem;
-    margin-top: auto;
+}
+
+#modal-handling {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+#modal-regissor {
+    color: #9f9f9f;
+    font-size: 0.85rem;
+}
+
+#modal-skadespelare {
+    color: #9f9f9f;
+    font-size: 0.85rem;
 }
 
 .movie-info {
