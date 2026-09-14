@@ -2,14 +2,35 @@ const workerUrl = 'https://rough-bonus-c86b.barnabaskoltai.workers.dev';
 
 function formatRuntime(speltid) {
     const parts = speltid.split('.');
-    const hours = parts[0];
-    const minutes = parts[1];
-    if (hours != 0 && minutes != 0) {
+    const hours = parseInt(parts[0]);
+    const minutes = parseInt(parts[1]);
+    if (hours !== 0 || minutes !== 0) {
         return `${hours}h ${minutes}min`;
     }
-    else {
-        return `Speltid är inte tillgänglig just nu`
-    }
+    return 'Speltid är inte tillgänglig just nu';
+}
+
+function openModal(film) {
+    document.getElementById('modal-poster').src = `${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}`;
+    document.getElementById('modal-title').textContent = film.FilmNamn;
+    document.getElementById('modal-runtime').textContent = formatRuntime(film.Speltid);
+    document.getElementById('modal-next-date').textContent = `${film.forestall[0].Datum} kl ${film.forestall[0].Tid}`;
+    document.getElementById('modal-overlay').classList.add('active');
+
+    document.getElementById('modal-genre').textContent = '';
+    document.getElementById('modal-handling').textContent = '';
+    document.getElementById('modal-regissor').textContent = '';
+    document.getElementById('modal-skadespelare').textContent = '';
+
+    fetch(`${workerUrl}/filminfo?id=${film.FilmNr}`)
+        .then(r => r.json())
+        .then(info => {
+            const f = info.Filminfo;
+            document.getElementById('modal-genre').textContent = f.genre;
+            document.getElementById('modal-handling').textContent = f.handling;
+            document.getElementById('modal-regissor').textContent = f.regissor ? `Regissör: ${f.regissor}` : '';
+            document.getElementById('modal-skadespelare').textContent = f.skadespelare ? `Skådespelare: ${f.skadespelare}` : '';
+        });
 }
 
 fetch(workerUrl)
@@ -34,10 +55,7 @@ fetch(workerUrl)
         data.film.sort((a, b) => {
             const parseDate = (dateStr) => {
                 const parts = dateStr.trim().split(/[\s\/]/);
-                const day = parseInt(parts[0]);
-                const month = parseInt(parts[1]) - 1;
-                const year = parseInt(parts[2]);
-                return new Date(year, month, day);
+                return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
             };
             return parseDate(a.forestall[0].Datum) - parseDate(b.forestall[0].Datum);
         });
@@ -53,32 +71,15 @@ fetch(workerUrl)
                 <p class="movie-next-time-text">Nästa visning</p>
                 <p class="movie-next-time-date">${film.forestall[0].Datum} kl ${film.forestall[0].Tid}</p>
                 <a href="http://sagabiolandsbro.internetbokningen.com/chap/bookforestall/" target="_blank" class="movie-booking-link">
-                    <div class="movie-booking"><i class="fa-solid fa-ticket"></i>Boka Biljett</div>
+                    <div class="movie-booking"><i class="fa-solid fa-ticket"></i> Boka Biljett</div>
                 </a>
                 <p class="movie-info">Läs mer <i class="fa-solid fa-arrow-right"></i></p>
             `;
 
-            card.querySelector('.movie-info').addEventListener('click', () => {
-                document.getElementById('modal-poster').src = `${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}`;
-                document.getElementById('modal-title').textContent = film.FilmNamn;
-                document.getElementById('modal-runtime').textContent = formatRuntime(film.Speltid);
-                document.getElementById('modal-next-date').textContent = `${film.forestall[0].Datum} kl ${film.forestall[0].Tid}`;
-                document.getElementById('modal-overlay').classList.add('active');
-
-                document.getElementById('modal-genre').textContent = '';
-                document.getElementById('modal-handling').textContent = '';
-                document.getElementById('modal-regissor').textContent = '';
-                document.getElementById('modal-skadespelare').textContent = '';
-
-                fetch(`${workerUrl}/filminfo?id=${film.FilmNr}`)
-                    .then(r => r.json())
-                    .then(info => {
-                        const f = info.Filminfo;
-                        document.getElementById('modal-genre').textContent = f.genre;
-                        document.getElementById('modal-handling').textContent = f.handling;
-                        document.getElementById('modal-regissor').textContent = f.regissor ? `Regissör: ${f.regissor}` : '';
-                        document.getElementById('modal-skadespelare').textContent = f.skadespelare ? `Skådespelare: ${f.skadespelare}` : '';
-                    });
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.movie-booking-link')) {
+                    openModal(film);
+                }
             });
 
             container.appendChild(card);
@@ -90,17 +91,21 @@ fetch(workerUrl)
         let autoplay;
 
         data.film.forEach((film, i) => {
-            slides.innerHTML += `
-                <div class="hero-slide">
-                    <img src="${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}" alt="${film.FilmNamn}">
-                    <div class="hero-info">
-                        <h2>${film.FilmNamn}</h2>
-                        <p class="genre">${film.Genre}</p>
-                        <p class="runtime">${formatRuntime(film.Speltid)}</p>
-                        <p class="next">Nästa visning: ${film.forestall[0].Datum} kl ${film.forestall[0].Tid}</p>
-                    </div>
+            const slide = document.createElement('div');
+            slide.className = 'hero-slide';
+            slide.innerHTML = `
+                <img src="${workerUrl}/image?url=${encodeURIComponent(film.BildSokvag)}" alt="${film.FilmNamn}">
+                <div class="hero-info">
+                    <h2>${film.FilmNamn}</h2>
+                    <p class="genre">${film.Genre}</p>
+                    <p class="runtime">${formatRuntime(film.Speltid)}</p>
+                    <p class="next">Nästa visning: ${film.forestall[0].Datum} kl ${film.forestall[0].Tid}</p>
                 </div>
             `;
+
+            slide.querySelector('img').addEventListener('click', () => openModal(film));
+            slides.appendChild(slide);
+
             dotsContainer.innerHTML += `<div class="hero-dot ${i === 0 ? 'active' : ''}" onclick="goTo(${i})"></div>`;
         });
 

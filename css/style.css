@@ -1,115 +1,44 @@
+/* =============================
+   RESET & ROOT
+   ============================= */
 * {
-    margin: 0px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-#hero-message {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding-right: 20px;
-    padding-left: 20px;
-    justify-content: center;
-    height: 100%;
-    color: white;
-    font-family: var(--heading-font);
-    margin-top: 200px;
-    font-size: 1.5rem;
-}
-
-#no-movies-message {
-    color: #9f9f9f;
-    margin-bottom: 20px;
-    font-family: var(--heading-font);
-    text-align: center;
-    width: 100%;
-}
-
-footer {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    background-color: #1c1c1c;
-    margin-top: 50px;
-}
-
-#footer-first {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-#footer-second {
-    text-align: center;
-    color: #666;
-    font-size: 0.75rem;
-}
-
-#footer-logo {
-    grid-column: 1/2;
-}
-
-#footer-logo>img {
-    width: 150px;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-#footer-social-media {
-    font-size: 5rem;
-    grid-column: 4/5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: aliceblue;
-}
-
-#footer-nav {
-    grid-column: 2/3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#footer-nav>ul {
-    list-style: none;
-    font-family: var(--heading-font);
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
-    font-weight: 500;
-    color: white;
-}
-
-#footer-info {
-    font-family: var(--heading-font);
-    color: aliceblue;
-    font-weight: 500;
-    grid-column: 3/4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 0.75rem;
-}
-
-body {
-    overflow-x: hidden;
-    background: #121212;
-}
-
-main {
-    overflow-x: hidden;
 }
 
 :root {
     --heading-font: "Montserrat", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #121212;
+    overflow-x: hidden;
+}
+
+main {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    text-align: center;
+    margin-top: 150px;
+    color: aliceblue;
+}
+
+/* =============================
+   HEADER & NAVIGATION
+   ============================= */
 header {
     height: 125px;
     width: 100%;
@@ -117,7 +46,6 @@ header {
     display: flex;
     align-items: center;
     z-index: 100;
-    /* background-color: black; */
     background-image: linear-gradient(to bottom, black, transparent);
 }
 
@@ -154,12 +82,61 @@ header {
     color: aliceblue;
 }
 
+.navigation {
+    position: relative;
+}
+
+.navigation::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.1s ease-in-out;
+}
+
+.navigation:hover::after {
+    transform: scaleX(1);
+}
+
+#nav-button {
+    display: none;
+}
+
+#nav-sidebar {
+    display: none;
+}
+
+#sidebar-overlay {
+    display: none;
+}
+
+/* =============================
+   HERO
+   ============================= */
 #hero {
     position: relative;
     width: 100%;
     height: 625px;
     overflow: hidden;
     background: #1a0000;
+}
+
+#hero-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 0 20px;
+    margin-top: 200px;
+    color: white;
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
 }
 
 #hero-slides {
@@ -185,6 +162,7 @@ header {
     height: 380px;
     border-radius: 8px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
 }
 
 .hero-info {
@@ -257,30 +235,11 @@ header {
     background: #e50914;
 }
 
-.navigation::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 2px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.1s ease-in-out;
-}
-
-.navigation:hover::after {
-    transform: scaleX(1);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.navigation {
-    position: relative;
+/* =============================
+   MOVIE CARDS
+   ============================= */
+#current-movies-anchor {
+    color: aliceblue;
 }
 
 #current-movies-container {
@@ -294,20 +253,25 @@ a {
     padding-bottom: 40px;
 }
 
-#current-movies-anchor {
-    color: aliceblue;
+#no-movies-message {
+    color: #9f9f9f;
+    margin-bottom: 20px;
+    font-family: var(--heading-font);
+    text-align: center;
+    width: 100%;
 }
 
 .current-movie {
-    border: none;
-    background: #1c1c1c;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.12);
-    font-family: var(--heading-font);
     display: flex;
     flex-direction: column;
     width: 300px;
+    background: #1c1c1c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.12);
+    font-family: var(--heading-font);
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -318,50 +282,42 @@ a {
 
 .movie-poster {
     width: calc(100% - 2rem);
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
     aspect-ratio: 2 / 3;
-    border-radius: 5px;
     object-fit: cover;
+    border-radius: 5px;
+    margin: 1rem;
 }
 
 .movie-name {
     font-size: 1.5rem;
     font-weight: 500;
-    margin-left: 1rem;
-    margin-right: 1rem;
     min-height: 60px;
+    margin: 0 1rem;
 }
 
 .movie-genre {
-    margin-left: 1rem;
-    margin-right: 1rem;
     font-size: 1rem;
     min-height: 3rem;
     color: #9f9f9f;
+    margin: 0 1rem;
 }
 
 .movie-runtime {
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
     color: #ffffff;
     border-bottom: 1px solid #333;
     padding-bottom: 0.5rem;
+    margin: 0 1rem 0.5rem 1rem;
 }
 
 .movie-next-time-text {
-    margin-left: 1rem;
     color: #9f9f9f;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 1rem;
 }
 
 .movie-next-time-date {
-    margin-left: 1rem;
     font-size: 1.25rem;
     color: red;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 1rem;
 }
 
 .movie-booking-link {
@@ -371,32 +327,13 @@ a {
 }
 
 .movie-booking {
-    margin-left: 1rem;
-    width: calc(100% - 2rem);
-    background-color: red;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50px;
+    background-color: red;
     border-radius: 5px;
-    margin-bottom: 1rem;
-}
-
-#modal-handling {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-top: 8px;
-}
-
-#modal-regissor {
-    color: #9f9f9f;
-    font-size: 0.85rem;
-}
-
-#modal-skadespelare {
-    color: #9f9f9f;
-    font-size: 0.85rem;
+    margin: 0 1rem 1rem 1rem;
 }
 
 .movie-info {
@@ -407,12 +344,9 @@ a {
     cursor: pointer;
 }
 
-h1 {
-    font-family: var(--heading-font);
-    text-align: center;
-    margin-top: 150px;
-}
-
+/* =============================
+   MODAL
+   ============================= */
 #modal-overlay {
     display: none;
     position: fixed;
@@ -429,13 +363,13 @@ h1 {
 }
 
 #modal {
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    max-width: 700px;
     background: #1a1a1a;
     border-radius: 12px;
     padding: 30px;
-    display: flex;
-    gap: 30px;
-    max-width: 700px;
-    width: 90%;
     font-family: var(--heading-font);
     position: relative;
     animation: popIn 0.3s ease;
@@ -460,9 +394,9 @@ h1 {
 
 #modal-info {
     display: flex;
-    width: 100%;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
     color: white;
 }
 
@@ -477,41 +411,114 @@ h1 {
     cursor: pointer;
 }
 
+#modal-handling {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+#modal-regissor,
+#modal-skadespelare {
+    color: #9f9f9f;
+    font-size: 0.85rem;
+}
+
 #modal-book {
-    width: calc(100% - 2rem);
-    background-color: red;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50px;
+    width: calc(100% - 2rem);
+    background-color: red;
     border-radius: 5px;
-    margin-bottom: 1rem;
-    margin-top: auto;
+    margin: auto 1rem 1rem 1rem;
 }
 
-#nav-button {
-    display: none;
+/* =============================
+   FOOTER
+   ============================= */
+footer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: #1c1c1c;
+    margin-top: 50px;
 }
 
-#nav-sidebar {
-    display: none;
+#footer-first {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+#footer-second {
+    text-align: center;
+    color: #666;
+    font-size: 0.75rem;
+    padding: 10px 0;
+}
+
+#footer-logo {
+    grid-column: 1/2;
+}
+
+#footer-logo>img {
+    width: 150px;
+    margin: 20px 0 0 20px;
+}
+
+#footer-nav {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-nav>ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    font-family: var(--heading-font);
+    font-weight: 500;
+    color: white;
+}
+
+#footer-info {
+    grid-column: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+    font-family: var(--heading-font);
+    font-weight: 500;
+    color: aliceblue;
+}
+
+#footer-social-media {
+    grid-column: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: aliceblue;
+}
+
+/* =============================
+   MEDIA QUERIES
+   ============================= */
 @media (max-width: 750px) {
-    #nav-header {
-        display: none;
-    }
-
-    .current-movie {
-        width: 210px;
-    }
-
-    .movie-booking-link {
-        font-size: 1.2rem;
+    header {
+        justify-content: space-between;
     }
 
     #header-logo {
         height: 60px;
+    }
+
+    #nav-header {
+        display: none;
     }
 
     #nav-button {
@@ -521,6 +528,10 @@ h1 {
         margin-right: 20px;
     }
 
+    #nav-button.active {
+        display: block;
+    }
+
     #nav-sidebar {
         position: fixed;
         top: 0;
@@ -528,55 +539,52 @@ h1 {
         width: 60%;
         max-width: 225px;
         height: 100vh;
-        background-color: black;
         display: none;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        background-color: black;
         z-index: 999;
         animation: popIn 0.3s ease;
-    }
-
-    #nav-sidebar>ul {
-        color: white;
-        display: flex;
-        height: 100vh;
-        gap: 50px;
-        width: 82%;
-        justify-content: center;
-        flex-direction: column;
-        list-style: none;
-    }
-
-    #nav-sidebar>i {
-        color: white;
-        position: fixed;
-        top: 16px;
-        right: 175px;
-        font-size: 1.75rem;
-        cursor: pointer;
-    }
-
-    #nav-sidebar>ul>li {
-        font-size: 1.25rem;
-        text-align: center;
-        line-height: 100px;
-        background: linear-gradient(135deg, rgba(120, 0, 0, 0.4), rgba(40, 0, 0, 0.6));
-        border: 1px solid rgba(220, 0, 0, 0.5);
-        box-shadow: 0 0 12px rgba(200, 0, 0, 0.5), inset 0 0 12px rgba(180, 0, 0, 0.2);
-        border-radius: 12px;
-        color: white;
-        height: 100px;
-        font-family: var(--heading-font);
-        font-weight: 600;
     }
 
     #nav-sidebar.active {
         display: flex;
     }
 
-    #nav-button.active {
-        display: block;
+    #nav-sidebar>i {
+        position: fixed;
+        top: 16px;
+        right: 175px;
+        color: white;
+        font-size: 1.75rem;
+        cursor: pointer;
+    }
+
+    #nav-sidebar>ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        width: 82%;
+        height: 100vh;
+        list-style: none;
+        color: white;
+    }
+
+    #nav-sidebar>ul>li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        font-size: 1.25rem;
+        font-family: var(--heading-font);
+        font-weight: 600;
+        color: white;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(120, 0, 0, 0.4), rgba(40, 0, 0, 0.6));
+        border: 1px solid rgba(220, 0, 0, 0.5);
+        box-shadow: 0 0 12px rgba(200, 0, 0, 0.5), inset 0 0 12px rgba(180, 0, 0, 0.2);
     }
 
     #sidebar-overlay {
@@ -586,7 +594,6 @@ h1 {
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(4px);
         z-index: 10;
-
     }
 
     #sidebar-overlay.active {
@@ -594,19 +601,43 @@ h1 {
         animation: popIn 0.3s ease;
     }
 
-    header {
-        justify-content: space-between;
+    .current-movie {
+        width: 210px;
     }
 
-
+    .movie-booking-link {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 615px) {
+    #current-movies-anchor {
+        margin-top: 75px;
+    }
+
+    #hero {
+        height: auto;
+        min-height: 700px;
+    }
+
+    #hero-slides {
+        align-items: flex-start;
+    }
+
     .hero-slide {
         flex-direction: column;
-        padding: 160px 20px 20px 20px;
         min-height: 700px;
+        padding: 160px 20px 20px 20px;
         background: linear-gradient(to bottom, #000 40%, transparent);
+    }
+
+    .hero-slide img {
+        height: 300px;
+        width: auto;
+    }
+
+    .hero-info {
+        text-align: center;
     }
 
     #modal {
@@ -622,33 +653,6 @@ h1 {
         height: auto;
     }
 
-    #footer-logo>img {
-        margin-top: 0px;
-        margin-left: 0px;
-    }
-
-    #hero {
-        height: auto;
-        min-height: 700px;
-    }
-
-    #hero-slides {
-        align-items: flex-start;
-    }
-
-    .hero-slide img {
-        height: 300px;
-        width: auto;
-    }
-
-    .hero-info {
-        text-align: center;
-    }
-
-    #current-movies-anchor {
-        margin-top: 75px;
-    }
-
     #footer-first {
         display: flex;
         flex-direction: column;
@@ -660,19 +664,19 @@ h1 {
         justify-content: center;
         margin-top: 50px;
     }
+
+    #footer-logo>img {
+        margin: 0;
+    }
 }
 
 @media (max-height: 675px) {
-    #nav-sidebar>ul>li {
-        height: 15%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     #nav-sidebar>ul {
         margin-top: 20px;
         gap: 20px;
+    }
+
+    #nav-sidebar>ul>li {
+        height: 15%;
     }
 }

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landsbro Bio</title>
-    <script src="js/app.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/design-UI/landsbro-bio-logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/7676aee198.js" crossorigin="anonymous"></script>
+    <script src="js/app.js" defer></script>
 </head>
 
 <body>
     <header>
         <div id="header-logo-div">
-            <a href="index.html"><img id="header-logo" src="images/design-UI/landsbro-bio-logo.png"
-                    alt="landsbro bio logga"></a>
+            <a href="index.html">
+                <img id="header-logo" src="images/design-UI/landsbro-bio-logo.png" alt="Landsbro Bio logga">
+            </a>
         </div>
         <nav id="nav-header">
             <ul id="nav-ul">
@@ -41,6 +42,7 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <div id="hero">
             <div id="hero-slides"></div>
@@ -51,10 +53,11 @@
         <h1 id="current-movies-anchor">Aktuella Filmer</h1>
         <div id="current-movies-container"></div>
     </main>
+
     <div id="modal-overlay">
         <div id="modal">
             <button id="modal-close"><i class="fa-solid fa-xmark"></i></button>
-            <img id="modal-poster" src="" alt="">
+            <img id="modal-poster" src="" alt="Film poster">
             <div id="modal-info">
                 <h2 id="modal-title"></h2>
                 <p id="modal-genre"></p>
@@ -66,22 +69,23 @@
                 <p id="modal-skadespelare"></p>
                 <a id="modal-book" href="http://sagabiolandsbro.internetbokningen.com/chap/bookforestall/"
                     target="_blank" class="movie-booking-link">
-                    <i class="fa-solid fa-ticket"></i>Boka Biljett
+                    <i class="fa-solid fa-ticket"></i> Boka Biljett
                 </a>
             </div>
         </div>
     </div>
+
     <div id="sidebar-overlay"></div>
+
     <footer>
         <div id="footer-first">
             <div id="footer-logo">
-                <img src="images/design-UI/landsbro-bio-logo.png" alt="landsbro bio logga">
+                <img src="images/design-UI/landsbro-bio-logo.png" alt="Landsbro Bio logga">
             </div>
             <div id="footer-nav">
                 <ul>
                     <li><a href="index.html" class="navigation">Hem</a></li>
-                    <li><a href="index.html#current-movies-anchor" class="navigation">Aktuella Filmer</a>
-                    </li>
+                    <li><a href="index.html#current-movies-anchor" class="navigation">Aktuella Filmer</a></li>
                     <li><a href="pages/omOss.html" class="navigation">Om Oss</a></li>
                     <li><a href="pages/kontaktaOss.html" class="navigation">Kontakta Oss</a></li>
                 </ul>
@@ -93,7 +97,9 @@
                 <p>070-934 38 26</p>
             </div>
             <div id="footer-social-media">
-                <a href="https://www.facebook.com/LandsbroSagaBio/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/LandsbroSagaBio/" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
             </div>
         </div>
         <div id="footer-second">© 2026 Saga Bio Landsbro</div>
