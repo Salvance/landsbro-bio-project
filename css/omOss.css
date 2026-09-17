@@ -77,3 +77,15 @@ main {
     font-size: 2rem;
     cursor: pointer;
 }
+
+@media (max-width: 615px) {
+    #jubileum {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 4px;
+        width: 95%;
+    }
+
+    #jubileum img {
+        height: 150px;
+    }
+}

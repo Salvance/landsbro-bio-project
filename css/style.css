@@ -344,6 +344,15 @@ header {
     cursor: pointer;
 }
 
+#observera {
+    color: #666;
+    font-family: var(--heading-font);
+    width: min(700px, 80%);
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
 /* =============================
    MODAL
    ============================= */
