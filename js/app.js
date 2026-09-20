@@ -139,6 +139,10 @@ function closeNav() {
     document.getElementById("sidebar-overlay").classList.remove("active");
 }
 
+document.getElementById("li-anchor").addEventListener("click", () => {
+    closeNav();
+})
+
 document.getElementById("nav-button").addEventListener("click", () => {
     document.getElementById("nav-button").classList.remove("active");
     document.getElementById("nav-sidebar").classList.add("active");
