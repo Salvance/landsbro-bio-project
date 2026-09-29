@@ -160,3 +160,5 @@ if (!document.getElementById("nav-sidebar").classList.contains("active")) {
 document.getElementById("sidebar-overlay").addEventListener("click", () => {
     closeNav();
 });
+
+document.getElementById('footer-second').innerHTML = `© ${new Date().getFullYear()} Saga Bio Landsbro<br><br>Skapad av Barnabás Koltai`;
